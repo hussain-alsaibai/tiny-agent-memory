@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install dependencies
+        run: |
+          pip install pytest pytest-cov
+          pip install -e .[numpy]
+
+      - name: Run tests
+        run: pytest -v --tb=short
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        if: matrix.python == '3.12'
+        continue_on_error: true
