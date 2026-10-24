@@ -36,7 +36,10 @@ where = ["."]
 include = ["tiny_agent_memory*"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+# The test file lives at the repo root, not in tests/. Pointing testpaths at a
+# non-existent directory makes pytest warn and fall back to a recursive scan;
+# naming the real file keeps the run deterministic.
+testpaths = ["test_tiny_agent_memory.py"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
 addopts = "-v --tb=short"
