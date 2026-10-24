@@ -33,4 +33,4 @@ jobs:
       - name: Upload coverage
         uses: codecov/codecov-action@v4
         if: matrix.python == '3.12'
-        continue_on_error: true
+        continue-on-error: true
