@@ -76,7 +76,8 @@ The agent memory landscape is dominated by heavyweight solutions:
 ### Installation
 
 ```bash
-pip install tiny-agent-memory
+# From GitHub (recommended -- not yet on PyPI)
+pip install git+https://github.com/hussain-alsaibai/tiny-agent-memory.git
 ```
 
 Or install from source:
