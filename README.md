@@ -89,7 +89,7 @@ pip install -e .
 For numpy-accelerated vector retrieval:
 
 ```bash
-pip install tiny-agent-memory[numpy]
+pip install "tiny-agent-memory[numpy] @ git+https://github.com/hussain-alsaibai/tiny-agent-memory.git"
 ```
 
 ### Basic usage
